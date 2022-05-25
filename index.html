@@ -60,7 +60,7 @@
             <div class="slider-wrapper" >
 
                 <div class="item">
-                    <img :src="slides[activeSlide].image" :alt="slides[activeSlide].title"/>
+                    <img :src="slides[activeSlide].image" :alt="slides[activeSlide].title" @click="playSlide"/>
                     
                     <div class="text">
 

@@ -88,6 +88,11 @@ const app = new Vue({
 
             this.activeSlide = activeSlide;
  
+        },
+
+
+        playSlide(){
+            this.interval = setInterval(() => { this.showNextSlide() }, 1000)
         }
         
     }
