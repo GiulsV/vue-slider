@@ -50,24 +50,25 @@ const app = new Vue({
 
     data: {
         slides,
-        activeSlideIndex: 0,
+        activeSlide: 0
     },
 
 
     methods: {
+
         showPrevSlide() {
-            if (this.activeSlideIndex > 0) {
-                this.activeSlideIndex--;
+            if (this.activeSlide > 0) {
+                this.activeSlide--;
             } else {
-                this.activeSlideIndex = this.slides.length - 1;
+                this.activeSlide = this.slides.length - 1;
             }
         },
 
         showNextSlide() {
-            if (this.activeSlideIndex < this.slides.length - 1) {
-                this.activeSlideIndex++;
+            if (this.activeSlide < this.slides.length - 1) {
+                this.activeSlide++;
             } else {
-                this.activeSlideIndex = 0;
+                this.activeSlide = 0;
             }
         },
 
@@ -76,15 +77,19 @@ const app = new Vue({
                 (slide) => slide.title === item.title
             )
 
-            if (index === this.activeSlideIndex) {
+            if (index === this.activeSlide) {
                 return 'thumb active';
             }
             return 'thumb';
         },
 
+
+        changeSlide(activeSlide) {
+
+            this.activeSlide = activeSlide;
+ 
+        }
         
-
-
     }
 
 });
