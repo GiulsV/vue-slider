@@ -49,37 +49,55 @@ const app = new Vue({
     el: '#app',
 
     data: {
+
         slides,
         activeSlide: 0
+        
     },
 
 
     methods: {
 
         showPrevSlide() {
+
             if (this.activeSlide > 0) {
+
                 this.activeSlide--;
+
             } else {
+
                 this.activeSlide = this.slides.length - 1;
+                
             }
         },
 
         showNextSlide() {
+
             if (this.activeSlide < this.slides.length - 1) {
+
                 this.activeSlide++;
+
             } else {
+
                 this.activeSlide = 0;
+
             }
         },
 
         checkIfActive(item) {
+
             const index = this.slides.findIndex(
+
                 (slide) => slide.title === item.title
+
             )
 
             if (index === this.activeSlide) {
+
                 return 'thumb active';
+
             }
+
             return 'thumb';
         },
 
@@ -92,11 +110,15 @@ const app = new Vue({
 
 
         playSlide(){
+
             this.interval = setInterval(() => { this.showNextSlide() }, 1000)
+
         },
 
         pauseSlide() {
+
             clearInterval(this.interval)
+
         }
         
     }
