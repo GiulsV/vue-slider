@@ -34,10 +34,57 @@ console.log(slides);
 // Partendo dal markup dei file che vi passo nello zip, far funzionare lo slider.
 // Avrà sia le funzionalità di navigazione Prev-Next (con anche il cambio della thumb attiva) come fatto insieme questa mattina,
 // sia la possibilità di navigazione direttamente dalle thumb (ovvero se clicco su una thumb quella diventa active e vedo l’item corrispondente in grande).
+
 // Bonus (come sempre se e solo alla fine se il resto funziona e l’ho compreso):
 // - il mio slider funziona anche con i tasti freccia “su-giù” della tastiera (oltre che bottoni Prev-Next cioè le frecce in pagina);
 // - applicare l’autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente
 // - quando il mouse va in hover sullo slider, bloccare l’autoplay e farlo riprendere quando esce
+
 // Consigli del giorno:
 // regola d’oro: riciclare/centralizzare ovunque possibile!
 // partite sempre da comprendere bene la logica che volete applicare, e solo dopo applicatela scrivendo codice
+
+const app = new Vue({
+
+    el: '#app',
+
+    data: {
+        slides,
+        activeSlideIndex: 0,
+    },
+
+
+    methods: {
+        showPrevSlide() {
+            if (this.activeSlideIndex > 0) {
+                this.activeSlideIndex--;
+            } else {
+                this.activeSlideIndex = this.slides.length - 1;
+            }
+        },
+
+        showNextSlide() {
+            if (this.activeSlideIndex < this.slides.length - 1) {
+                this.activeSlideIndex++;
+            } else {
+                this.activeSlideIndex = 0;
+            }
+        },
+
+        checkIfActive(item) {
+            const index = this.slides.findIndex(
+                (slide) => slide.title === item.title
+            )
+
+            if (index === this.activeSlideIndex) {
+                return 'thumb active';
+            }
+            return 'thumb';
+        },
+
+        
+
+
+    }
+
+});
